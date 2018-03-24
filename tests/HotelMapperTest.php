@@ -1,9 +1,9 @@
 <?php
 
-class MapperTest extends TestCase
+class HotelMapperTest extends TestCase
 {
 
-    private static $data;
+    private $data;
 
     public function simulateData()
     {
@@ -129,8 +129,12 @@ class MapperTest extends TestCase
 
     function testHotelMapper()
     {
+        $this->simulateData();
+
         $hotelMapper = $this->app->make("Service\Mapper\HotelMapper");
         $hotelObjsCollection = $hotelMapper->mapJsonToCollection($this->data);
-        self::assertEquals(count(json_decode($this->data)), $hotelObjsCollection->count());
+        $hotelsArray= json_decode($this->data, 1);
+
+        self::assertEquals(count($hotelsArray['hotels']), $hotelObjsCollection->count());
     }
 }
