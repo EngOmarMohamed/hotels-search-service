@@ -2,16 +2,24 @@
 
 namespace Service\Repository;
 
+use Service\Common\APIRepository;
+use Service\Filters\ContainFilter;
+use Service\Filters\DateRangeFilter;
+use Service\Filters\EqualFilter;
+use Service\Filters\PriceRangeFilter;
 use Service\Mapper\HotelMapper;
 
 class HotelRepository extends APIRepository
 {
-    /**
-     * HotelRepository constructor.
-     * pass the Mapper to the parent Repository
-     */
-    function __construct()
+
+    protected function getSearchFilters(): array
     {
-        parent::__construct(new HotelMapper());
+        return [
+            "name" => new ContainFilter(),
+            "city" => new EqualFilter(),
+            "price" => new PriceRangeFilter(),
+            "availability" => new DateRangeFilter()
+        ];
     }
+
 }
