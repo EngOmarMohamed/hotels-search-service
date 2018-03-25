@@ -15,4 +15,5 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('index', 'ExampleController@index');
+$router->get('test', 'ExampleController@index');
+$router->get('index', 'HotelController@index');

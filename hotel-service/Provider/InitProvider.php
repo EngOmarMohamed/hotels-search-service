@@ -13,10 +13,6 @@ use Illuminate\Support\ServiceProvider;
 
 class InitProvider extends ServiceProvider
 {
-    public function boot()
-    {
-
-    }
 
     public function register()
     {

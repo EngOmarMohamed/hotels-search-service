@@ -7,7 +7,7 @@ use Service\Entity\Hotel;
 use Service\Entity\Availability;
 use Service\Interfaces\IMapper;
 
-class HotelMapper extends Collection implements IMapper
+class HotelMapper implements IMapper
 {
     /**
      * map from json string to Collection
@@ -15,7 +15,7 @@ class HotelMapper extends Collection implements IMapper
      * @param string $json
      * @return Collection
      */
-    function mapJsonToCollection(string $json): Collection
+    function mapJsonToCollection($json): Collection
     {
         $hotelsArr = json_decode($json, true);
 
