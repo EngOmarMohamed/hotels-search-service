@@ -3,21 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Service\Interfaces\IHandler;
 use Service\Interfaces\IRepository;
 use Service\Repository\HotelRepository;
 
 class HotelController
 {
+
     private $hotelRepo;
+
+    private $hotelHandler;
 
 
     /**
      * HotelController constructor.
+     *
      * @param IRepository $hotelRepository
      */
-    public function __construct(IRepository $hotelRepository)
+    public function __construct(IRepository $hotelRepository, IHandler $hotelHandler)
     {
         $this->hotelRepo = $hotelRepository;
+        $this->hotelHandler = $hotelHandler;
     }
 
     /**
@@ -29,13 +35,20 @@ class HotelController
     public function index(Request $request)
     {
 
-//        $hotels = $this->hotelRepo->where(['city' => 'manila', 'availability' => ["start" => "10-10-2020", "end" => "19-10-2020"]])
-//            ->order("name", "DESC")
-//            ->get();
+        $inputs = $request->only(['name', 'city', 'min', 'max', 'start', 'end', 'orderBy', 'orderType']);
+        $conditions = $this->hotelHandler->handle($inputs);
 
-        $hotels = $this->hotelRepo->where(['city' => 'city1'])
-//            ->order("name", "DESC")
-            ->get();
+        if (!empty($conditions['filters'])) {
+            $this->hotelRepo->where($conditions['filters']);
+        }
+
+        if (!empty($conditions['sort'])) {
+            $orderType = $conditions['sort']['orderType'] ?? "";
+            $orderBy = $conditions['sort']['orderBy'];
+            $this->hotelRepo->order($orderBy, $orderType);
+        }
+
+        $hotels = $this->hotelRepo->get();
 
         return $hotels;
 

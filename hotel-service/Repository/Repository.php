@@ -1,12 +1,8 @@
 <?php
 
-namespace Service\Common;
+namespace Service\Repository;
 
 use Illuminate\Support\Collection;
-use Service\Filters\ContainFilter;
-use Service\Filters\DateRangeFilter;
-use Service\Filters\EqualFilter;
-use Service\Filters\PriceRangeFilter;
 use Service\Interfaces\ILoader;
 use Service\Interfaces\IMapper;
 use Service\Interfaces\IRepository;
@@ -90,11 +86,11 @@ abstract class Repository implements IRepository
      * @param string $orderType
      * @return IRepository
      */
-    public function order(string $orderBy, string $orderType): IRepository
+    public function order(string $orderBy, $orderType): IRepository
     {
         $type = false;
 
-        if ($orderType == 'DESC')
+        if (strtoupper($orderType) == 'DESC')
             $type = true;
 
         $this->data = $this->data->sortBy(function ($obj) use ($orderBy) {
@@ -106,7 +102,7 @@ abstract class Repository implements IRepository
     }
 
     /**
-     * Return Data
+     * Return Data Collection
      *
      * @return Collection
      */

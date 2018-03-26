@@ -11,7 +11,9 @@ use Service\Filters\PriceRangeFilter;
 
 class FiltersTest extends \TestCase
 {
-    //Test EqualFilter check if two strings are equal
+    /**
+     * Test EqualFilter check if two strings are equal
+     */
     public function testEqualFilter()
     {
         $equalFilter = new EqualFilter();
@@ -20,7 +22,9 @@ class FiltersTest extends \TestCase
         self::assertEquals(true, $result);
     }
 
-    //Test EqualFilter Case insensitive
+    /**
+     * Test EqualFilter Case insensitive
+     */
     public function testIEqualFilter()
     {
         $equalFilter = new EqualFilter();
@@ -29,7 +33,9 @@ class FiltersTest extends \TestCase
         self::assertEquals(true, $result);
     }
 
-    //Test ConatinFilter check if string has a keyword
+    /**
+     * Test ConatinFilter check if string has a keyword
+     */
     public function testContainFilter()
     {
         $containFilter = new ContainFilter();
@@ -38,7 +44,9 @@ class FiltersTest extends \TestCase
         self::assertEquals(true, $result);
     }
 
-    //Test ConatinFilter Case insensitive
+    /**
+     * Test ConatinFilter Case insensitive
+     */
     public function testIContainFilter()
     {
         $containFilter = new ContainFilter();
@@ -47,7 +55,9 @@ class FiltersTest extends \TestCase
         self::assertEquals(true, $result);
     }
 
-    //Test PriceRangeFilter check if price is in specified range
+    /**
+     * Test PriceRangeFilter check if price is in specified range
+     */
     public function testPriceRangeFilter()
     {
         $priceFilter = new PriceRangeFilter();
@@ -56,7 +66,9 @@ class FiltersTest extends \TestCase
         self::assertEquals(true, $result);
     }
 
-    //Test DateRangeFilter check the Hotel Availability Dates
+    /**
+     * Test DateRangeFilter check the Hotel Availability Dates
+     */
     public function testDateRangeFilter()
     {
         $dateFilter = new DateRangeFilter();

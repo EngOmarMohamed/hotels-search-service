@@ -45,6 +45,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof CustomValidationException)
+            return response()->json($e->getErrorMessages(), 500);
+
         return parent::render($request, $e);
     }
 }

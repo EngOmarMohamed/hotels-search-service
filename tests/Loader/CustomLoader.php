@@ -21,7 +21,7 @@ class CustomLoader implements ILoader
     {
       \"name\": \"Media One Hotel\",
       \"price\": 102.2,
-      \"city\": \"city1\",
+      \"city\": \"dubai\",
       \"availability\": [
         {
           \"from\": \"10-10-2020\",
