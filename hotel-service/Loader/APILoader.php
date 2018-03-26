@@ -34,10 +34,7 @@ class APILoader implements ILoader
     function load(): string
     {
 
-        //old fashion
-//        return json_decode(file_get_contents($this->apiUrl), true);
-
-        //new fashion with async request
+        //use Guzzle/Client for async request
         $response = (new Client())
             ->requestAsync('GET', $this->apiUrl)
             ->then(function ($res) {

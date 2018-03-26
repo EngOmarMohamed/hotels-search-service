@@ -5,6 +5,11 @@ namespace Service\Common\Validators;
 class HotelCustomValidator extends CustomValidator
 {
 
+    /**
+     * set the Rules for Hotel Search
+     *
+     * @return array
+     */
     public function getRules(): array
     {
         return [

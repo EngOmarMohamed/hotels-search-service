@@ -10,6 +10,11 @@ class RequestHandler implements IHandler
 {
     private $validator;
 
+    /**
+     * RequestHandler constructor.
+     *
+     * @param IValidator $validator
+     */
     public function __construct(IValidator $validator)
     {
         $this->validator = $validator;

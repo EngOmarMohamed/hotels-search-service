@@ -7,6 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Service\Common\Exceptions\CustomValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
@@ -45,6 +46,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        /**
+         * CustomValidationException
+         */
         if ($e instanceof CustomValidationException)
             return response()->json($e->getErrorMessages(), 500);
 

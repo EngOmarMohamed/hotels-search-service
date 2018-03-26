@@ -24,13 +24,16 @@ abstract class CustomValidator implements IValidator
 
         $validator = app('validator')->make($inputs, $rules);
 
-        //validate that min is less than max and otherwise
 
         if ($validator->fails() ||
+            //validate that min is less than max and otherwise
             (isset($inputs['min']) && $inputs['min'] > $inputs['max']) ||
             (isset($inputs['max']) && $inputs['max'] < $inputs['min'])) {
 
-            throw new CustomValidationException($validator->messages());
+            $messages = $validator->messages()->getMessages();
+            $errorMessages = !empty($messages) ? $messages : ['price_range' => ['max price should be greater than min price and otherwise.']];
+
+            throw new CustomValidationException($errorMessages);
         }
     }
 
