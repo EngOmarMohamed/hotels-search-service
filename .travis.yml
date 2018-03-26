@@ -5,7 +5,7 @@ php:
 
 before_script:
   - composer install
-  - cp .env.example .env
+  - scp .env.example .env
 
 script:
   - vendor/bin/phpunit
