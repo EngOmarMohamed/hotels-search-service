@@ -23,7 +23,7 @@ class APILoader implements ILoader
      */
     public function __construct()
     {
-        $this->apiUrl = env("API_URL");
+        $this->apiUrl = config('loader.apiURL');
     }
 
     /**
