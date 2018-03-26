@@ -5,7 +5,7 @@
 Tajawal Hotels Search Service Using <a href="https://lumen.laravel.com/">Lumen- Micro Framework</a>
 
 ### Description
-##### This is a RESTful API Service to allow hotels search in an external source (<a href="https://api.myjson.com/bins/tl0bp">Inventory</a>) by any of the following:
+#### This is a RESTful API Service to allow hotels search in an external source (<a href="https://api.myjson.com/bins/tl0bp">Inventory</a>) by any of the following:
 - Hotel Name
 - Destination [City]
 - Price range [ex: $100:$200]
@@ -18,29 +18,29 @@ and allow sorting by:
 
 This is including search by multiple criteria in the same time like search by destination and price together.
 
-##### <a href="https://github.com/EngOmarMohamed/hotels-search-service/tree/master/hotel-service">Service Achticture</a>
-##### Steps
-###### Step#1
+### <a href="https://github.com/EngOmarMohamed/hotels-search-service/tree/master/hotel-service">Service Achticture</a>
+### Steps
+#### Step#1
 - Request the Search URL
 
 First of the RequestHandler takes the input parameters and validate these inputs depends on hotel rules then map them to a well-format array to work on them
 
-###### Step#2
+#### Step#2
 - Load Data From the Source
 
 Then Load the data from the API Inventory by using <a href="http://docs.guzzlephp.org/en/stable/quickstart.html">Guzzle, PHP HTTP client</a>
 
-###### Step#3
+#### Step#3
 - Map the Loaded Data to array of Objects
 
 After Loading the data, Mapping it to an array of Hotel Objects
 
-###### Step#4
+#### Step#4
 - Build Operations Over the Mapped Data
 
 In this step using <a href="https://laravel.com/docs/5.6/collections">Laravel Collections</a> was a good choice which provides useful functions like: Filter, SortBy that helped a alot
 
-##### Structure
+### Structure
 - Common: contains Handler, Validator, CustomValidationException Implementations
 - Entity: contains Hotel, Availability Entities
 - Filters: contains all filters types EqualFilter, ContainFilter, PriceRangeFilter, DateRangeFilter
